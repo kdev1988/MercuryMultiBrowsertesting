@@ -1,9 +1,17 @@
 package mercurymulti;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -11,11 +19,20 @@ import org.testng.annotations.Test;
 public class mercurytourstest {
 	private WebDriver driver;
 	@BeforeClass
-	public void run_the_browser(){
-		System.setProperty("webdriver.chrome.driver","D:\\dokjunk\\drivers\\chromedriver_win32\\chromedriver.exe");
+	public void run_the_browser() throws Exception{
+		/*System.setProperty("webdriver.chrome.driver","D:\\dokjunk\\drivers\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
-		System.out.println("beforeclass");
+		System.out.println("beforeclass");*/
 		//driver.manage().window().maximize();
+		DesiredCapabilities dcp = new DesiredCapabilities();
+		dcp.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
+		dcp.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+		dcp.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, true);
+		dcp.setCapability(CapabilityType.SUPPORTS_NETWORK_CONNECTION, true);
+		dcp.setCapability("name", "Mercury");
+		dcp.setCapability("idleTimeout", 150);
+		driver = new RemoteWebDriver(new URL("http://35.231.161.229:4444/wd/hub"),dcp);
+	
 	
 	}
 	@Test(priority=1)
