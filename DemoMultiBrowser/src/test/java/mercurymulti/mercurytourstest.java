@@ -32,7 +32,8 @@ public class mercurytourstest {
 		dcp.setCapability("name", "Mercury");
 		dcp.setCapability("idleTimeout", 150);
 		//driver = new RemoteWebDriver(new URL("http://35.231.161.229:4444/wd/hub"),dcp);
-		driver = new RemoteWebDriver(new URL("http://104.199.94.18:4444/wd/hub"),dcp);
+		//driver = new RemoteWebDriver(new URL("http://104.199.94.18:4444/wd/hub"),dcp);
+		driver = new RemoteWebDriver(new URL("http://35.237.110.189:31934:4444/wd/hub"),dcp)
 	
 	
 	}
